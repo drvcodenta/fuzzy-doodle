@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { TrendingUp, TrendingDown } from 'lucide-react'
 import { AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
+import worldMap from '../assets/worldMap.png'
 
 function Dashboard() {
   // Data for charts
@@ -45,18 +46,19 @@ function Dashboard() {
   ]
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">eCommerce</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">eCommerce</h1>
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className='grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6'>
+      <div className="xl:col-span-1">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl"
+          className="bg-blue-50 dark:bg-[#282828] p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Customers</div>
           <div className="flex items-start justify-between">
@@ -72,7 +74,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl"
+          className="bg-purple-50 dark:bg-[#282828] p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Orders</div>
           <div className="flex items-start justify-between">
@@ -88,7 +90,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl"
+          className="bg-green-50 dark:bg-[#282828] p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Revenue</div>
           <div className="flex items-start justify-between">
@@ -104,7 +106,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl"
+          className="bg-orange-50 dark:bg-[#282828] p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Growth</div>
           <div className="flex items-start justify-between">
@@ -115,19 +117,19 @@ function Dashboard() {
             </div>
           </div>
         </motion.div>
-      </div>
-
-      {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        </div>
+        <div className='xl:col-span-2'>
         {/* Projections vs Actuals */}
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+          className="bg-white dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Projections vs Actuals</h3>
-          <ResponsiveContainer width="100%" height={250}>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Projections vs Actuals</h3>
+          <div className="h-[200px] sm:h-[250px]">
+            <ResponsiveContainer width="100%" height="100%">
             <BarChart data={projectionsData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis dataKey="month" stroke="#9ca3af" />
@@ -137,64 +139,70 @@ function Dashboard() {
               <Bar dataKey="projected" fill="#bfdbfe" radius={[8, 8, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
+          </div>
         </motion.div>
+        </div>
+      </div>
+
+      {/* Charts Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+
 
         {/* Revenue by Location */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+          className="bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Revenue by Location</h3>
-          <div className="flex items-center justify-between">
-            <ResponsiveContainer width="50%" height={250}>
-              <PieChart>
-                <Pie
-                  data={locationData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={50}
-                  outerRadius={80}
-                  paddingAngle={2}
-                  dataKey="value"
-                >
-                  {locationData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="space-y-2">
-              {locationData.map((item, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: item.color }}></div>
-                  <span className="text-sm text-gray-600 dark:text-gray-400">{item.name}</span>
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{item.value}K</span>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Revenue by Location</h3>
+          
+          {/* World Map */}
+          <div className="relative mb-6">
+            <img src={worldMap} alt="World Map" className="w-full h-auto opacity-40" />
+          </div>
+
+          {/* Location List with Progress Bars */}
+          <div className="space-y-4">
+            {locationData.map((item, index) => (
+              <div key={index}>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">{item.name}</span>
+                  <span className="text-sm font-semibold text-gray-900 dark:text-white">{item.value}K</span>
                 </div>
-              ))}
-            </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                  <div
+                    className="h-2 rounded-full transition-all duration-500"
+                    style={{
+                      width: `${(item.value / 72) * 100}%`,
+                      backgroundColor: '#60a5fa'
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>
 
       {/* Revenue Chart and Total Sales */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Revenue Chart */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+          className="lg:col-span-2 bg-white dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Revenue</h3>
-            <div className="flex items-center gap-4 text-sm">
-              <span className="text-gray-600 dark:text-gray-400">Current Week: <strong>$58,211</strong></span>
-              <span className="text-gray-600 dark:text-gray-400">Previous Week: <strong>$68,768</strong></span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Revenue</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm">
+              <span className="text-gray-600 dark:text-gray-400">Current: <strong>$58,211</strong></span>
+              <span className="text-gray-600 dark:text-gray-400 hidden sm:inline">Previous: <strong>$68,768</strong></span>
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={250}>
+          <div className="h-[200px] sm:h-[250px]">
+            <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={revenueData}>
               <defs>
                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
@@ -209,6 +217,7 @@ function Dashboard() {
               <Area type="monotone" dataKey="value" stroke="#3b82f6" fillOpacity={1} fill="url(#colorValue)" strokeWidth={2} />
             </AreaChart>
           </ResponsiveContainer>
+          </div>
         </motion.div>
 
         {/* Total Sales */}
@@ -216,11 +225,11 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+          className="bg-white dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Total Sales</h3>
-          <div className="relative">
-            <ResponsiveContainer width="100%" height={200}>
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Total Sales</h3>
+          <div className="relative h-[180px] sm:h-[200px]">
+            <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
                   data={salesData}
@@ -260,19 +269,19 @@ function Dashboard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden"
+        className="bg-white dark:bg-[#282828] rounded-xl shadow-sm overflow-hidden"
       >
-        <div className="p-6 border-b border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Top Selling Products</h3>
+        <div className="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Top Selling Products</h3>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full">
+        <div className="overflow-x-auto -mx-4 sm:mx-0">
+          <table className="w-full min-w-[640px]">
             <thead className="bg-gray-50 dark:bg-gray-700/50">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Name</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Quantity</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Name</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Quantity</th>
+                <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Amount</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -285,10 +294,10 @@ function Dashboard() {
                   whileHover={{ backgroundColor: 'rgba(249, 250, 251, 0.5)' }}
                   className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
                 >
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{product.name}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">${product.price}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">{product.quantity}</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${product.amount.toFixed(2)}</td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{product.name}</td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">${product.price}</td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">{product.quantity}</td>
+                  <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-white">${product.amount.toFixed(2)}</td>
                 </motion.tr>
               ))}
             </tbody>

@@ -22,7 +22,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import NotificationPanel from './NotificationPanel'
 
 function Layout({ children, darkMode, setDarkMode }) {
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 1024)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const location = useLocation()
 
@@ -45,12 +45,27 @@ function Layout({ children, darkMode, setDarkMode }) {
 
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
+      {/* Mobile Overlay */}
+      {sidebarOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSidebarOpen(false)}
+          className="fixed inset-0 bg-black/50 z-20 lg:hidden"
+        />
+      )}
+
       {/* Sidebar */}
       <motion.aside
-        initial={false}
-        animate={{ width: sidebarOpen ? 256 : 0, opacity: sidebarOpen ? 1 : 0 }}
+        initial={true}
+        animate={{ 
+          x: sidebarOpen ? 0 : -256,
+        }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex-shrink-0 h-full z-30 overflow-hidden"
+        className={`fixed lg:static bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 h-full z-30 overflow-hidden transition-all duration-300 ${
+          sidebarOpen ? 'w-64' : 'w-64 lg:w-0 lg:border-0'
+        }`}
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2">
@@ -169,12 +184,7 @@ function Layout({ children, darkMode, setDarkMode }) {
       </motion.aside>
 
       {/* Main Content */}
-      <motion.div 
-        initial={false}
-        animate={{ marginRight: notificationsOpen ? 320 : 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="flex-1 flex flex-col overflow-hidden"
-      >
+      <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
@@ -187,23 +197,23 @@ function Layout({ children, darkMode, setDarkMode }) {
               >
                 <PanelLeft size={20} className="text-gray-700 dark:text-gray-300" />
               </motion.button>
-              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors hidden sm:block">
                 <Star size={20} className="text-gray-700 dark:text-gray-300" />
               </button>
-              <div className="flex items-center gap-3">
+              <div className="hidden sm:flex items-center gap-3">
                 <span className="text-sm text-gray-600 dark:text-gray-400">Dashboards</span>
                 <span className="text-gray-400">/</span>
                 <span className="text-sm font-medium text-gray-900 dark:text-white">Default</span>
               </div>
             </div>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <div className="relative hidden md:block">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
                 <input
                   type="text"
                   placeholder="Search"
-                  className="pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-700 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
+                  className="pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-700 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 lg:w-64"
                 />
               </div>
 
@@ -211,18 +221,18 @@ function Layout({ children, darkMode, setDarkMode }) {
                 onClick={() => setDarkMode(!darkMode)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {darkMode ? <Sun size={18} className="sm:w-5 sm:h-5" /> : <Moon size={18} className="sm:w-5 sm:h-5" />}
               </button>
 
               <button
                 onClick={() => setNotificationsOpen(!notificationsOpen)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors relative"
               >
-                <Bell size={20} />
+                <Bell size={18} className="sm:w-5 sm:h-5" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="hidden sm:flex items-center gap-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-full"></div>
               </div>
             </div>
@@ -233,7 +243,7 @@ function Layout({ children, darkMode, setDarkMode }) {
         <main className="flex-1 overflow-auto bg-gray-50 dark:bg-gray-900">
           {children}
         </main>
-      </motion.div>
+      </div>
 
       {/* Notification Panel */}
       <AnimatePresence>
