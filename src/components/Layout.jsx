@@ -12,8 +12,6 @@ import {
   Search,
   Sun,
   Moon,
-  Menu,
-  X,
   PieChart,
   PanelLeft,
   Star
