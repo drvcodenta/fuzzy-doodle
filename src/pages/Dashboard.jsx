@@ -125,7 +125,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-white dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+          className="bg-[#f7f9fb] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Projections vs Actuals</h3>
           <div className="h-[200px] sm:h-[250px]">
