@@ -52,75 +52,75 @@ function Dashboard() {
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">eCommerce</h1>
       </div>
 
-      {/* KPI Cards */}
-      <div className='grid grid-cols-1 xl:grid-cols-3 gap-4 sm:gap-6'>
-      <div className="xl:col-span-1">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-blue-50 dark:bg-[#282828] p-6 rounded-xl"
-        >
-          <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Customers</div>
-          <div className="flex items-start justify-between">
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">3,781</div>
-            <div className="flex items-center gap-1 text-green-600 text-sm">
-              <TrendingUp size={16} />
-              <span>+11.01%</span>
+      {/* KPI Cards and Projections */}
+      <div className='grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6'>
+        {/* KPI Cards Container */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="bg-[#e3f5ff] p-6 rounded-xl"
+          >
+            <div className="text-sm text-gray-600 dark:text-black mb-2">Customers</div>
+            <div className="flex items-start justify-between">
+              <div className="text-3xl font-bold text-gray-900 dark:text-black">3,781</div>
+              <div className="flex items-center gap-1 text-green-600 dark:text-black text-sm">
+                <TrendingUp size={16} />
+                <span>+11.01%</span>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="bg-purple-50 dark:bg-[#282828] p-6 rounded-xl"
-        >
-          <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Orders</div>
-          <div className="flex items-start justify-between">
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">1,219</div>
-            <div className="flex items-center gap-1 text-red-600 text-sm">
-              <TrendingDown size={16} />
-              <span>-0.03%</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-[#f7f9fb] dark:bg-[#282828] p-6 rounded-xl"
+          >
+            <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Orders</div>
+            <div className="flex items-start justify-between">
+              <div className="text-3xl font-bold text-gray-900 dark:text-white">1,219</div>
+              <div className="flex items-center gap-1 text-red-600 text-sm">
+                <TrendingDown size={16} />
+                <span>-0.03%</span>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="bg-green-50 dark:bg-[#282828] p-6 rounded-xl"
-        >
-          <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Revenue</div>
-          <div className="flex items-start justify-between">
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">$695</div>
-            <div className="flex items-center gap-1 text-green-600 text-sm">
-              <TrendingUp size={16} />
-              <span>+15.03%</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-[#f7f9fb] dark:bg-[#282828] p-6 rounded-xl"
+          >
+            <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Revenue</div>
+            <div className="flex items-start justify-between">
+              <div className="text-3xl font-bold text-gray-900 dark:text-white">$695</div>
+              <div className="flex items-center gap-1 text-green-600 dark:text-white text-sm">
+                <TrendingUp size={16} />
+                <span>+15.03%</span>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="bg-orange-50 dark:bg-[#282828] p-6 rounded-xl"
-        >
-          <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Growth</div>
-          <div className="flex items-start justify-between">
-            <div className="text-3xl font-bold text-gray-900 dark:text-white">30.1%</div>
-            <div className="flex items-center gap-1 text-green-600 text-sm">
-              <TrendingUp size={16} />
-              <span>+6.08%</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="bg-[#e5ecf6] p-6 rounded-xl"
+          >
+            <div className="text-sm text-gray-600 dark:text-black mb-2">Growth</div>
+            <div className="flex items-start justify-between">
+              <div className="text-3xl font-bold text-gray-900 dark:text-black">30.1%</div>
+              <div className="flex items-center gap-1 text-green-600 dark:text-black text-sm">
+                <TrendingUp size={16} />
+                <span>+6.08%</span>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
         </div>
-        <div className='xl:col-span-2'>
-        {/* Projections vs Actuals */}
 
+        {/* Projections vs Actuals */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -130,18 +130,17 @@ function Dashboard() {
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Projections vs Actuals</h3>
           <div className="h-[200px] sm:h-[250px]">
             <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={projectionsData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="month" stroke="#9ca3af" />
-              <YAxis stroke="#9ca3af" />
-              <Tooltip />
-              <Bar dataKey="actual" fill="#93c5fd" radius={[8, 8, 0, 0]} />
-              <Bar dataKey="projected" fill="#bfdbfe" radius={[8, 8, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+              <BarChart data={projectionsData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="month" stroke="#9ca3af" />
+                <YAxis stroke="#9ca3af" />
+                <Tooltip />
+                <Bar dataKey="actual" fill="#93c5fd" radius={[8, 8, 0, 0]} />
+                <Bar dataKey="projected" fill="#bfdbfe" radius={[8, 8, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
         </motion.div>
-        </div>
       </div>
 
       {/* Charts Row */}
