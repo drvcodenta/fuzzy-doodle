@@ -75,7 +75,7 @@ function Dashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-[#f7f9fb] dark:bg-[#282828] p-6 rounded-xl"
+            className="bg-[#f7f9fb] dark:bg-[#1c1c1c] p-6 rounded-xl"
           >
             <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Orders</div>
             <div className="flex items-start justify-between">
@@ -91,7 +91,7 @@ function Dashboard() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-[#f7f9fb] dark:bg-[#282828] p-6 rounded-xl"
+            className="bg-[#f7f9fb] dark:bg-[#1c1c1c] p-6 rounded-xl"
           >
             <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Revenue</div>
             <div className="flex items-start justify-between">
@@ -125,7 +125,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-[#f7f9fb] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+          className="bg-[#f7f9fb] dark:bg-[#1c1c1c] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Projections vs Actuals</h3>
           <div className="h-[200px] sm:h-[250px]">
@@ -152,7 +152,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+          className="bg-[#F7F9FB] dark:bg-[#1c1c1c] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Revenue by Location</h3>
           
@@ -191,7 +191,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="lg:col-span-2 bg-white dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+          className="lg:col-span-2 bg-white dark:bg-[#1c1c1c] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Revenue</h3>
@@ -224,7 +224,7 @@ function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="bg-white dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+          className="bg-white dark:bg-[#1c1c1c] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Total Sales</h3>
           <div className="relative h-[180px] sm:h-[200px]">
@@ -268,7 +268,7 @@ function Dashboard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        className="bg-white dark:bg-[#282828] rounded-xl shadow-sm overflow-hidden"
+        className="bg-white dark:bg-[#1c1c1c] rounded-xl shadow-sm overflow-hidden"
       >
         <div className="p-4 sm:p-6 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Top Selling Products</h3>
