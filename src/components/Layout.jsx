@@ -61,13 +61,13 @@ function Layout({ children, darkMode, setDarkMode }) {
           x: sidebarOpen ? 0 : -256,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed lg:static bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 h-full z-30 overflow-hidden transition-all duration-300 ${
+        className={`fixed lg:static bg-white dark:bg-[#1c1c1c] border-r border-gray-200 dark:border-gray-700 h-full z-30 overflow-hidden transition-all duration-300 ${
           sidebarOpen ? 'w-64' : 'w-64 lg:w-0 lg:border-0'
         }`}
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center dark:text-white font-bold">
               B
             </div>
             <span className="font-semibold text-gray-900 dark:text-white">ByeWind</span>
@@ -184,7 +184,7 @@ function Layout({ children, darkMode, setDarkMode }) {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+        <header className="bg-white dark:bg-[#1c1c1c] border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <motion.button
@@ -211,7 +211,7 @@ function Layout({ children, darkMode, setDarkMode }) {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="pl-10 pr-4 py-2 bg-gray-100 dark:bg-gray-700 border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 lg:w-64"
+                  className="pl-10 pr-4 py-2 bg-gray-100 dark:bg-[#282828] border-0 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 lg:w-64"
                 />
               </div>
 
