@@ -169,7 +169,12 @@ function Layout({ children, darkMode, setDarkMode }) {
       </motion.aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <motion.div 
+        initial={false}
+        animate={{ marginRight: notificationsOpen ? 320 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="flex-1 flex flex-col overflow-hidden"
+      >
         {/* Header */}
         <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
@@ -228,7 +233,7 @@ function Layout({ children, darkMode, setDarkMode }) {
         <main className="flex-1 overflow-auto bg-gray-50 dark:bg-gray-900">
           {children}
         </main>
-      </div>
+      </motion.div>
 
       {/* Notification Panel */}
       <AnimatePresence>
