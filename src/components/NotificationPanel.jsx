@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { X, Bug, UserPlus, Bell as BellIcon, FileText, Trash2 } from 'lucide-react'
+import { X, Bug, UserPlus } from 'lucide-react'
 
 function NotificationPanel({ onClose }) {
   const notifications = [
@@ -40,7 +40,7 @@ function NotificationPanel({ onClose }) {
           onClick={onClose}
           className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
         >
-          <X size={20} />
+          <X size={20} className='dark:text-white' />
         </button>
       </div>
 
