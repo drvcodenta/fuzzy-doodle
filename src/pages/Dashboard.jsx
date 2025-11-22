@@ -59,7 +59,7 @@ function Dashboard() {
           className="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Customers</div>
-          <div className="flex items-end justify-between">
+          <div className="flex items-start justify-between">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">3,781</div>
             <div className="flex items-center gap-1 text-green-600 text-sm">
               <TrendingUp size={16} />
@@ -75,7 +75,7 @@ function Dashboard() {
           className="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Orders</div>
-          <div className="flex items-end justify-between">
+          <div className="flex items-start justify-between">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">1,219</div>
             <div className="flex items-center gap-1 text-red-600 text-sm">
               <TrendingDown size={16} />
@@ -91,7 +91,7 @@ function Dashboard() {
           className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Revenue</div>
-          <div className="flex items-end justify-between">
+          <div className="flex items-start justify-between">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">$695</div>
             <div className="flex items-center gap-1 text-green-600 text-sm">
               <TrendingUp size={16} />
@@ -107,7 +107,7 @@ function Dashboard() {
           className="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-xl"
         >
           <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Growth</div>
-          <div className="flex items-end justify-between">
+          <div className="flex items-start justify-between">
             <div className="text-3xl font-bold text-gray-900 dark:text-white">30.1%</div>
             <div className="flex items-center gap-1 text-green-600 text-sm">
               <TrendingUp size={16} />
@@ -127,7 +127,7 @@ function Dashboard() {
           className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Projections vs Actuals</h3>
-          <ResponsiveContainer width="100%" height={200}>
+          <ResponsiveContainer width="100%" height={250}>
             <BarChart data={projectionsData}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis dataKey="month" stroke="#9ca3af" />
@@ -148,7 +148,7 @@ function Dashboard() {
         >
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Revenue by Location</h3>
           <div className="flex items-center justify-between">
-            <ResponsiveContainer width="50%" height={200}>
+            <ResponsiveContainer width="50%" height={250}>
               <PieChart>
                 <Pie
                   data={locationData}

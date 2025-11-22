@@ -13,7 +13,10 @@ import {
   Sun,
   Moon,
   Menu,
-  X
+  X,
+  PieChart,
+  PanelLeft,
+  Star
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import NotificationPanel from './NotificationPanel'
@@ -44,9 +47,10 @@ function Layout({ children, darkMode, setDarkMode }) {
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
       {/* Sidebar */}
       <motion.aside
-        initial={{ x: 0 }}
-        animate={{ x: sidebarOpen ? 0 : -280 }}
-        className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex-shrink-0 fixed lg:relative h-full z-30"
+        initial={false}
+        animate={{ width: sidebarOpen ? 256 : 0, opacity: sidebarOpen ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex-shrink-0 h-full z-30 overflow-hidden"
       >
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-2">
@@ -83,8 +87,21 @@ function Layout({ children, darkMode, setDarkMode }) {
             <div className="space-y-1">
               <Link
                 to="/default"
-                className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors relative ${
+                  location.pathname === '/default'
+                    ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
               >
+                {location.pathname === '/default' && (
+                  <motion.div 
+                    initial={{ scaleY: 0, opacity: 0 }}
+                    animate={{ scaleY: 1, opacity: 1 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="w-1 h-4 bg-gray-900 dark:bg-white rounded-full absolute left-0"
+                  />
+                )}
+                <PieChart size={18} />
                 Default
               </Link>
               {dashboards.map((item) => {
@@ -94,12 +111,20 @@ function Layout({ children, darkMode, setDarkMode }) {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors ${
+                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors relative ${
                       isActive
                         ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
                         : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     }`}
                   >
+                    {isActive && (
+                      <motion.div 
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        animate={{ scaleY: 1, opacity: 1 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="w-1 h-4 bg-gray-900 dark:bg-white rounded-full absolute left-0"
+                      />
+                    )}
                     <Icon size={18} />
                     {item.name}
                   </Link>
@@ -114,12 +139,25 @@ function Layout({ children, darkMode, setDarkMode }) {
             <div className="space-y-1">
               {pages.map((item) => {
                 const Icon = item.icon
+                const isActive = location.pathname === item.path
                 return (
                   <Link
                     key={item.path}
                     to={item.path}
-                    className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
+                    className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg transition-colors relative ${
+                      isActive
+                        ? 'bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white'
+                        : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    }`}
                   >
+                    {isActive && (
+                      <motion.div 
+                        initial={{ scaleY: 0, opacity: 0 }}
+                        animate={{ scaleY: 1, opacity: 1 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="w-1 h-4 bg-gray-900 dark:bg-white rounded-full absolute left-0"
+                      />
+                    )}
                     <Icon size={18} />
                     {item.name}
                   </Link>
@@ -136,11 +174,16 @@ function Layout({ children, darkMode, setDarkMode }) {
         <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <button
+              <motion.button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="lg:hidden p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
-                {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+                <PanelLeft size={20} className="text-gray-700 dark:text-gray-300" />
+              </motion.button>
+              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                <Star size={20} className="text-gray-700 dark:text-gray-300" />
               </button>
               <div className="flex items-center gap-3">
                 <span className="text-sm text-gray-600 dark:text-gray-400">Dashboards</span>
