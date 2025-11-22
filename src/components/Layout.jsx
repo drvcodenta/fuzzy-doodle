@@ -217,14 +217,14 @@ function Layout({ children, darkMode, setDarkMode }) {
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="p-2 hover:bg-white dark:hover:bg-gray-700 rounded-lg transition-colors"
+                className="p-2 hover:bg-white dark:hover:bg-gray-700 rounded-lg "
               >
                 {darkMode ? <Sun size={18} className="sm:w-5 sm:h-5 dark:text-white" /> : <Moon size={18} className="sm:w-5 sm:h-5" />}
               </button>
 
               <button
                 onClick={() => setNotificationsOpen(!notificationsOpen)}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors relative"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg relative"
               >
                 <Bell size={18} className="sm:w-5 sm:h-5 dark:text-white" />
                 <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
