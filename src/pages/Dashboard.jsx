@@ -144,13 +144,13 @@ function Dashboard() {
       </div>
 
       {/* Revenue Chart and Revenue by Location */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Revenue Chart */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
-          className="bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+          className="lg:col-span-2 bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Revenue</h3>

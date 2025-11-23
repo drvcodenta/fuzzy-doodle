@@ -61,7 +61,7 @@ function Layout({ children, darkMode, setDarkMode }) {
           x: sidebarOpen ? 0 : -256,
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={`fixed lg:static bg-white dark:bg-[#1c1c1c] border-r border-gray-200 dark:border-gray-700 h-full z-30 overflow-hidden transition-all duration-300 ${
+        className={`fixed lg:static bg-white dark:bg-[#1c1c1c] border-r border-gray-200 dark:border-gray-700 h-full z-30 overflow-hidden ${
           sidebarOpen ? 'w-64' : 'w-64 lg:w-0 lg:border-0'
         }`}
       >
