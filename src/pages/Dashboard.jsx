@@ -143,55 +143,14 @@ function Dashboard() {
         </motion.div>
       </div>
 
-      {/* Charts Row */}
+      {/* Revenue Chart and Total Sales */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-
-
-        {/* Revenue by Location */}
+        {/* Revenue Chart */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
           className="bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
-        >
-          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Revenue by Location</h3>
-          
-          {/* World Map */}
-          <div className="relative mb-6">
-            <img src={worldMap} alt="World Map" className="w-full h-auto opacity-40" />
-          </div>
-
-          {/* Location List with Progress Bars */}
-          <div className="space-y-4">
-            {locationData.map((item, index) => (
-              <div key={index}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-900 dark:text-white">{item.name}</span>
-                  <span className="text-sm font-semibold text-gray-900 dark:text-white">{item.value}K</span>
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="h-2 rounded-full transition-all duration-500"
-                    style={{
-                      width: `${(item.value / 72) * 100}%`,
-                      backgroundColor: '#60a5fa'
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Revenue Chart and Total Sales */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-        {/* Revenue Chart */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="lg:col-span-2 bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-2">
             <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Revenue</h3>
@@ -223,7 +182,7 @@ function Dashboard() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: 0.6 }}
           className="bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
         >
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">Total Sales</h3>
@@ -263,19 +222,57 @@ function Dashboard() {
         </motion.div>
       </div>
 
+      {/* Revenue by Location */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="bg-[#F7F9FB] dark:bg-[#282828] p-4 sm:p-6 rounded-xl shadow-sm"
+        >
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">Revenue by Location</h3>
+          
+          {/* World Map */}
+          <div className="relative mb-6">
+            <img src={worldMap} alt="World Map" className="w-full h-auto opacity-40" />
+          </div>
+
+          {/* Location List with Progress Bars */}
+          <div className="space-y-4">
+            {locationData.map((item, index) => (
+              <div key={index}>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">{item.name}</span>
+                  <span className="text-sm font-semibold text-gray-900 dark:text-white">{item.value}K</span>
+                </div>
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                  <div
+                    className="h-2 rounded-full transition-all duration-500"
+                    style={{
+                      width: `${(item.value / 72) * 100}%`,
+                      backgroundColor: '#60a5fa'
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
       {/* Top Selling Products */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
-        className="bg-[#] dark:bg-[#282828] rounded-xl shadow-sm overflow-hidden"
+        className="bg-[#F7F9FB] dark:bg-[#282828] rounded-xl shadow-sm overflow-hidden"
       >
         <div className="p-4 sm:p-6">
           <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Top Selling Products</h3>
         </div>
-        <div className="overflow-x-auto -mx-4 sm:mx-0">
+        <div className="overflow-x-auto">
           <table className="w-full min-w-[640px]">
-            <thead className="bg-gray-50 border-b border-gray-200 dark:border-gray-700 dark:bg-[#282828]">
+            <thead className="border-b border-gray-200 dark:border-gray-700">
               <tr>
                 <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Name</th>
                 <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Price</th>
@@ -290,8 +287,7 @@ function Dashboard() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.9 + index * 0.05 }}
-                  whileHover={{ backgroundColor: 'rgba(249, 250, 251, 0.5)' }}
-                  className="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors"
+                  className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors"
                 >
                   <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">{product.name}</td>
                   <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">${product.price}</td>
